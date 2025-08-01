@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-crypto-service
+spec:
+  selector:
+    app: flask-crypto
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000

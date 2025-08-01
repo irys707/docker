@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-crypto-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-crypto
+  template:
+    metadata:
+      labels:
+        app: flask-crypto
+    spec:
+      containers:
+      - name: flask-crypto
+        image: <your-dockerhub-username>/flask-crypto-app
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            cpu: "100m"
+          limits:
+            cpu: "500m"

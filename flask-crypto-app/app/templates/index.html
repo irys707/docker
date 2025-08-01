@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flask Crypto App</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container py-5">
+  <h2 class="mb-4">🛡️ Cryptography Portal</h2>
+  <form method="POST">
+    <div class="mb-3">
+      <label for="text" class="form-label">Text:</label>
+      <textarea name="text" class="form-control" required></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="key" class="form-label">AES Key (optional):</label>
+      <input type="text" name="key" class="form-control" value="{{ key }}">
+    </div>
+    <div class="mb-3">
+      <select name="method" class="form-select" required>
+        <option value="caesar_encrypt">Caesar Encrypt</option>
+        <option value="caesar_decrypt">Caesar Decrypt</option>
+        <option value="base64_encode">Base64 Encode</option>
+        <option value="base64_decode">Base64 Decode</option>
+        <option value="aes_encrypt">AES Encrypt</option>
+        <option value="aes_decrypt">AES Decrypt</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  {% if result %}
+    <div class="alert alert-success mt-3">Result: {{ result }}</div>
+  {% endif %}
+  {% if error %}
+    <div class="alert alert-danger mt-3">Error: {{ error }}</div>
+  {% endif %}
+</body>
+</html>

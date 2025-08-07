@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+<form method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label>Select Wordlist</label>
+        <select class="form-control" name="wordlist">
+            {% for w in wordlists %}
+                <option value="{{ w }}">{{ w }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>or Upload Custom Wordlist</label>
+        <input type="file" name="custom_wordlist" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-success">Start Cracking</button>
+</form>
+{% endblock %}

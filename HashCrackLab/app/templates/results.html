@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>✅ Cracked Results</h3>
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr><th>Hash</th><th>Password</th></tr>
+    </thead>
+    <tbody>
+        {% for r in results %}
+        <tr><td>{{ r.hash }}</td><td>{{ r.plaintext }}</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{{ url_for('routes.download') }}" class="btn btn-info">⬇️ Download Results</a>
+{% endblock %}

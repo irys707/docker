@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+<form method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label>Paste Hashes</label>
+        <textarea name="hashes" class="form-control" rows="5"></textarea>
+    </div>
+    <div class="mb-3">
+        <label>or Upload Hash File</label>
+        <input type="file" name="hashfile" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Next →</button>
+</form>
+{% endblock %}

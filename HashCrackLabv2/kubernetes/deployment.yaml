@@ -13,11 +13,23 @@ spec:
         app: hashcracklab
     spec:
       containers:
-      - name: hashcracklab
-        image: yourdockerhub/hashcracklab:latest
-        ports:
-        - containerPort: 5000
-        resources:
-          limits:
-            memory: "512Mi"
-            cpu: "500m"
+        - name: hashcracklab
+          image: fairsy/hashcracklab:latest
+          ports:
+            - containerPort: 5000
+          env:
+            - name: SECRET_KEY
+              value: "supersecretkey"
+          volumeMounts:
+            - name: storage
+              mountPath: /app/app/storage
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+      volumes:
+        - name: storage
+          emptyDir: {}

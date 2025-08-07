@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head><title>CA Dashboard</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"></head>
+<body class="container">
+  <h2 class="mt-4">Dashboard</h2>
+  <p>Logged in as {{ session.username }} (role: {{ role }}) <a href="{{ url_for('logout') }}">Logout</a></p>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for cat, msg in messages %}
+        <div class="alert alert-{{ cat }}">{{ msg }}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  {% if role == 'requester' %}
+    <a href="{{ url_for('submit_csr') }}" class="btn btn-success mb-3">Submit CSR</a>
+  {% endif %}
+  <h3>Issued Certificates</h3>
+  <table class="table table-striped">
+    <thead><tr><th>Serial</th><th>Subject</th><th>Requester</th><th>Issued At</th><th>Status</th><th>Actions</th></tr></thead>
+    <tbody>
+    {% for c in issued %}
+      <tr>
+        <td>{{ c.serial }}</td>
+        <td>{{ c.subject }}</td>
+        <td>{{ c.requester }}</td>
+        <td>{{ c.issued_at }}</td>
+        <td>{{ 'Revoked' if c.revoked else 'Active' }}</td>
+        <td>
+          <a class="btn btn-sm btn-primary" href="{{ url_for('download_cert', serial=c.serial) }}">Download Cert</a>
+          {% if role == 'admin' and not c.revoked %}
+            <form method="post" style="display:inline" action="{{ url_for('revoke', serial=c.serial) }}">
+              <button class="btn btn-sm btn-danger">Revoke</button>
+            </form>
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  <a href="{{ url_for('download_crl') }}" class="btn btn-secondary">Download CRL</a>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Cracked Results</h3>
+<table class="table">
+  <thead><tr><th>Cracked Hash</th></tr></thead>
+  <tbody>
+    {% for row in results %}
+    <tr><td>{{ row.cracked }}</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+<a href="{{ url_for('main.download') }}" class="btn btn-secondary">Download Results</a>
+{% endblock %}

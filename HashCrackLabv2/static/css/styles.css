@@ -1,0 +1,18 @@
+body {
+    background-color: #f5f5f5;
+}
+
+.container {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+textarea {
+    resize: vertical;
+}
+
+.table {
+    margin-top: 1rem;
+}

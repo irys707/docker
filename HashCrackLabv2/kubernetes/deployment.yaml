@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hashcracklab
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hashcracklab
+  template:
+    metadata:
+      labels:
+        app: hashcracklab
+    spec:
+      containers:
+      - name: hashcracklab
+        image: yourdockerhub/hashcracklab:latest
+        ports:
+        - containerPort: 5000
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"

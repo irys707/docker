@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+  <textarea name="hashes" class="form-control" rows="5" placeholder="Paste your hashes here..."></textarea>
+  <p class="text-center my-2">OR</p>
+  <input type="file" name="hash_file" class="form-control mb-2" />
+  <select name="hash_type" class="form-control mb-2">
+    <option value="">Auto Detect</option>
+    <option value="0">MD5</option>
+    <option value="100">SHA1</option>
+    <option value="1000">NTLM</option>
+  </select>
+  <button type="submit" class="btn btn-primary w-100">Continue</button>
+</form>
+{% endblock %}

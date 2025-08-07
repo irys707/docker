@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="post">
+  <label>Select Cracking Mode:</label>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="mode" value="auto" checked>
+    <label class="form-check-label">Auto-Fuzz Mode</label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="mode" value="manual">
+    <label class="form-check-label">Manual Upload</label>
+  </div>
+  <button type="submit" class="btn btn-success mt-3">Proceed</button>
+</form>
+{% endblock %}
